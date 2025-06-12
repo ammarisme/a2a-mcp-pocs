@@ -1,0 +1,15 @@
+{
+    "id": "agent-b",
+    "version": "1.0",
+    "description": "A simple summarization agent",
+    "endpoint": "http://localhost:5001",
+    "capabilities": [
+        "summarize-text"
+    ],
+    "protocols": [
+        "a2a"
+    ],
+    "auth": {
+        "type": "none"
+    }
+}
