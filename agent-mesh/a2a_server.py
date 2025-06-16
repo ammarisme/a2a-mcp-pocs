@@ -22,15 +22,18 @@ class ContextualAgent(A2AServer):
     def handle_message(self, message: Message) -> Message:
         # 1) Parse the incoming JSON from TextContent
         incoming_str = message.content.text
+        print("A2A agent recieved message " +incoming_str)
         incoming = json.loads(incoming_str)
         ctx = ContextModel(**incoming)
 
         # 2) Mutate your context however you like
+        print("A2A agent mutating the context")
         latest_user = ctx.conversationHistory[-1]["text"]
         ctx.conversationHistory.append({
             "role": "agent",
             "text": f"Agent got: {latest_user}"
         })
+        print(f"Updated context : {ctx.conversationHistory}")
 
         # 3) Return the full, updated context as JSON‐string in TextContent
         return Message(
